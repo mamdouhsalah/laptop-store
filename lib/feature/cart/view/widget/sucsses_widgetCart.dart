@@ -114,17 +114,6 @@ class _SucssesWidgetcartState extends State<SucssesWidgetcart> {
                         onPressed: () {
                           setState(() {
                             products.removeAt(index);
-                            // BlocProvider.of<CartCubit>(
-                            //   context,
-                            // ).removeCartCubit(productId: product.id);
-                            // ScaffoldMessenger.of(context).showSnackBar(
-                            //   const SnackBar(
-                            //     content: Center(
-                            //       child: Text('removed from your card'),
-                            //     ),
-                            //     duration: Duration(seconds: 1),
-                            //   ),
-                            // );
                           });
                         },
                         icon: const Icon(Icons.close, color: Colors.grey),

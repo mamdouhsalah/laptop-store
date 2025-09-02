@@ -25,7 +25,7 @@ class CartData {
     List<ProductModel> list = data
         .map((e) => ProductModel.fromJson(e))
         .toList();
-
+        
     return list;
   }
 

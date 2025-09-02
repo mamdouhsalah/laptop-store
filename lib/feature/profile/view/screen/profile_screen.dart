@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:state_mangement/core/manger/cubit/style_cubit.dart';
+import 'package:state_mangement/feature/authentication/view/screen/login_screen.dart';
+import 'package:state_mangement/feature/cart/view/screen/cart_screen.dart';
 import 'package:state_mangement/feature/profile/view/screen/editProfile_screen.dart';
 import 'package:state_mangement/feature/profile/view/widget/buildOption_Widget.dart';
 
@@ -56,7 +58,12 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.shopping_bag_outlined,
               title: "My Orders",
               theme: theme,
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CartScreen()),
+                );
+              },
             ),
 
             buildOption(
@@ -64,7 +71,14 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.credit_card,
               title: "Payment Methods",
               theme: theme,
-              onTap: () {},
+              onTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    backgroundColor: Colors.green,
+                    content: Text('will be implemented soon'),
+                  ),
+                );
+              },
             ),
             buildOption(
               context,
@@ -85,7 +99,13 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.logout,
               title: "Logout",
               theme: theme,
-              onTap: () {},
+              onTap: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                  (route) => false,
+                );
+              },
             ),
           ],
         ),

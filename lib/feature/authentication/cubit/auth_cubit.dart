@@ -5,13 +5,14 @@ import 'package:state_mangement/feature/authentication/model/auth_data.dart';
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
+  AuthData authData = AuthData();
   AuthCubit() : super(AuthInitial());
   static AuthCubit get(context) => BlocProvider.of(context);
 
   loginCubit({required String email, required String password}) async {
     emit(AutLoginLLoadingState());
 
-    var data = await AuthData.loginData(email: email, password: password);
+    var data = await authData.loginData(email: email, password: password);
 
     emit(AuthLoginSuccessState(data: data));
   }
@@ -25,7 +26,7 @@ class AuthCubit extends Cubit<AuthState> {
     required String gender,
   }) async {
     emit(AutLoginLLoadingState());
-    var data = await AuthData.registerData(
+    var data = await authData.registerData(
       email: email,
       password: password,
       name: name,
@@ -37,5 +38,4 @@ class AuthCubit extends Cubit<AuthState> {
 
     emit(AuthregisterSuccessState(data: data));
   }
-  
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:state_mangement/feature/authentication/view/screen/login_screen.dart';
 
 import 'package:state_mangement/feature/cart/view/screen/cart_screen.dart';
 import 'package:state_mangement/feature/favorite/view/screen/favorite_screen.dart';
@@ -88,14 +89,19 @@ class CustomDrawer extends StatelessWidget {
           ),
 
           const Spacer(),
-
-          ListTile(
-            leading: Icon(Icons.logout, color: iconColor, size: 22.sp),
-            title: Text(
-              "Logout",
-              style: TextStyle(color: textColor, fontSize: 16.sp),
-            ),
+          _buildDrawerItem(
+            context,
+            title: "Logout",
+            icon: Icons.login,
+            onTap: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => LoginScreen()),
+                (route) => false,
+              );
+            },
           ),
+
           SizedBox(height: 12.h),
         ],
       ),

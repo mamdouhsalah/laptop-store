@@ -29,7 +29,7 @@ class MyValidators {
     if (!value.startsWith('01')) {
       return 'Phone number must start with 01';
     }
-    if (value.length < 11) {
+    if (value.length < 11 || value.length > 11) {
       return 'Phone must be at least 11 characters long';
     }
 
@@ -50,7 +50,7 @@ class MyValidators {
     if (value == null || value.isEmpty) {
       return 'Please enter a national ID';
     }
-    if (value.length < 14) {
+    if (value.length < 14 || value.length > 14) {
       return 'National ID must be at least 14 characters long';
     }
     return null;
